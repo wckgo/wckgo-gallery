@@ -10,7 +10,8 @@
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "mapbox-gl": "^1.11.0"
+    "mapbox-gl": "^1.11.0",
+    "three": "^0.117.1"
   },
   "devDependencies": {
     "@types/mapbox-gl": "^1.11.0"

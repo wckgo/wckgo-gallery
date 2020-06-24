@@ -1,11 +1,3 @@
-# `building`
+# Building
 
-> TODO: description
-
-## Usage
-
-```
-const building = require('building');
-
-// TODO: DEMONSTRATE API
-```
+3D建筑可视化
