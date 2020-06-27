@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "mapbox-gl": "^1.11.0",
+    "maptalks": "^0.47.5",
+    "maptalks.mapboxgl": "^0.3.3",
+    "maptalks.three": "^0.11.2",
     "three": "^0.117.1"
   },
-  "devDependencies": {
-    "@types/mapbox-gl": "^1.11.0"
-  }
+  "devDependencies": {}
 }

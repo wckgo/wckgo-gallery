@@ -832,6 +832,16 @@
   resolved "https://registry.yarnpkg.com/@mapbox/whoots-js/-/whoots-js-3.1.0.tgz#497c67a1cef50d1a2459ba60f315e448d2ad87fe"
   integrity sha512-Es6WcD0nO5l+2BOQS4uLfNPYQaNDfbot3X1XUoloz+x0mPDS3eeORZJl06HXjwBG1fOGwCRnzK88LMdxKRrd6Q==
 
+"@maptalks/feature-filter@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.npm.taobao.org/@maptalks/feature-filter/download/@maptalks/feature-filter-1.0.0.tgz#bfcc7f705e6de5c6c3d3802a3b5081272c877fc8"
+  integrity sha1-v8x/cF5t5cbD04AqO1CBJyyHf8g=
+
+"@maptalks/function-type@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.npm.taobao.org/@maptalks/function-type/download/@maptalks/function-type-1.2.3.tgz#2f5c33b095af452c727026801bf1496ff78fe777"
+  integrity sha1-L1wzsJWvRSxycCaAG/FJb/eP53c=
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -987,11 +997,6 @@
   resolved "https://registry.yarnpkg.com/@types/anymatch/-/anymatch-1.3.1.tgz#336badc1beecb9dacc38bea2cf32adf627a8421a"
   integrity sha512-/+CRPXpBDpo2RK9C68N3b2cOvO0Cf5B9aPijHsoDQTHivnGSObdOF2BRQOYjojWTDy6nQvMjmqRXIxH55VjxxA==
 
-"@types/geojson@*":
-  version "7946.0.7"
-  resolved "https://registry.yarnpkg.com/@types/geojson/-/geojson-7946.0.7.tgz#c8fa532b60a0042219cdf173ca21a975ef0666ad"
-  integrity sha512-wE2v81i4C4Ol09RtsWFAqg3BUitWbHSpSlIo+bNdsCJijO9sjme+zm+73ZMCa/qMC8UEERxzGbvmr1cffo2SiQ==
-
 "@types/glob@^7.1.1":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.2.tgz#06ca26521353a545d94a0adc74f38a59d232c987"
@@ -1009,13 +1014,6 @@
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
   integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
-
-"@types/mapbox-gl@^1.11.0":
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/@types/mapbox-gl/-/mapbox-gl-1.11.0.tgz#409d07bc6c85e3f14ba754b9e34c0e74809dabfc"
-  integrity sha512-Ni4i20zL+8Ynolk59qOILSfjGPxZ8kwNvmTd0fTXQVPbrNGbFXsNb2kTayi6yQiTV12y26l0dqjtH9n6QiT95Q==
-  dependencies:
-    "@types/geojson" "*"
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -2820,7 +2818,7 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-earcut@^2.2.2:
+earcut@^2.1.3, earcut@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/earcut/-/earcut-2.2.2.tgz#41b0bc35f63e0fe80da7cddff28511e7e2e80d11"
   integrity sha512-eZoZPPJcUHnfRZ0PjLvx2qBordSiO8ofC3vt+qACLM95u+4DovnbYNpQtJh0DNsWj8RnxrQytD4WA8gj5cRIaQ==
@@ -3375,6 +3373,11 @@ from2@^2.1.0:
     inherits "^2.0.1"
     readable-stream "^2.0.0"
 
+frustum-intersects@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.npm.taobao.org/frustum-intersects/download/frustum-intersects-0.1.0.tgz#d1d144099a40d8c5168b62acc83731434f5fa709"
+  integrity sha1-0dFECZpA2MUWi2KsyDcxQ09fpwk=
+
 fs-extra@^8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/fs-extra/-/fs-extra-8.1.0.tgz#49d43c45a88cd9677668cb7be1b46efdb8d2e1c0"
@@ -3454,6 +3457,13 @@ geojson-vt@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/geojson-vt/-/geojson-vt-3.2.1.tgz#f8adb614d2c1d3f6ee7c4265cad4bbf3ad60c8b7"
   integrity sha512-EvGQQi/zPrDA6zr6BnJD/YhwAkBP8nnJ9emh3EnHQKVMfg/MRVtPbMYdgVy/IaEmn4UfagD2a6fafPDL5hbtwg==
+
+geometry-extrude@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.npm.taobao.org/geometry-extrude/download/geometry-extrude-0.1.2.tgz#7e4d8166a11266741ffb8d1770b3a954d99daf93"
+  integrity sha1-fk2BZqESZnQf+40XcLOpVNmdr5M=
+  dependencies:
+    earcut "^2.1.3"
 
 get-caller-file@^2.0.1:
   version "2.0.5"
@@ -4815,6 +4825,29 @@ mapbox-gl@^1.11.0:
     supercluster "^7.1.0"
     tinyqueue "^2.0.3"
     vt-pbf "^3.1.1"
+
+maptalks.mapboxgl@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.npm.taobao.org/maptalks.mapboxgl/download/maptalks.mapboxgl-0.3.3.tgz#4708674f29c489dec81bd1f32aa2864ab84ccf1b"
+  integrity sha1-RwhnTynEid7IG9HzKqKGSrhMzxs=
+
+maptalks.three@^0.11.2:
+  version "0.11.2"
+  resolved "https://registry.npm.taobao.org/maptalks.three/download/maptalks.three-0.11.2.tgz#e2b86d45e637fbeb8e5b4dc062e9c3748c0f6313"
+  integrity sha1-4rhtReY3++uOW03AYunDdIwPYxM=
+  dependencies:
+    geometry-extrude "^0.1.2"
+
+maptalks@^0.47.5:
+  version "0.47.5"
+  resolved "https://registry.npm.taobao.org/maptalks/download/maptalks-0.47.5.tgz?cache=0&sync_timestamp=1592990123612&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmaptalks%2Fdownload%2Fmaptalks-0.47.5.tgz#5266ab77bcf7ca367eab0c013de89e92fdef60c8"
+  integrity sha1-Umard7z3yjZ+qwwBPeiekv3vYMg=
+  dependencies:
+    "@maptalks/feature-filter" "^1.0.0"
+    "@maptalks/function-type" "^1.2.3"
+    frustum-intersects "^0.1.0"
+    simplify-js "^1.2.1"
+    zousan "^2.3.3"
 
 md5.js@^1.3.4:
   version "1.3.5"
@@ -6691,6 +6724,11 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
 
+simplify-js@^1.2.1:
+  version "1.2.4"
+  resolved "https://registry.npm.taobao.org/simplify-js/download/simplify-js-1.2.4.tgz#7aab22d6df547ffd40ef0761ccd82b75287d45c7"
+  integrity sha1-eqsi1t9Uf/1A7wdhzNgrdSh9Rcc=
+
 slash@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
@@ -7969,3 +8007,8 @@ yargs@^14.2.2:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^15.0.1"
+
+zousan@^2.3.3:
+  version "2.5.1"
+  resolved "https://registry.npm.taobao.org/zousan/download/zousan-2.5.1.tgz#514a8aad3cbba412fb59a4e0ebaffdd72e2dd4c6"
+  integrity sha1-UUqKrTy7pBL7WaTg66/91y4t1MY=
