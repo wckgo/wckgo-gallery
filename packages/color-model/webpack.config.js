@@ -18,23 +18,15 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "building",
+      title: "color-model",
       template: "public/index.html",
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: __dirname + "/public/assets",
-          to: __dirname + "/dist/assets",
-        },
-      ],
-    }),
+    })
   ],
   module: {
     rules: [
       {
-        test: /\.worker\.js$/,
-        use: { loader: 'worker-loader' }
+        test: /\.glsl$/i,
+        use: ["raw-loader"],
       }
     ],
   },

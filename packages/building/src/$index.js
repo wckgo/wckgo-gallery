@@ -1,6 +1,6 @@
 import * as maptalks from "maptalks";
 import { MapboxglLayer } from "maptalks.mapboxgl";
-import { ThreeLayer } from "maptalks.three";
+import { ThreeLayer, extrudePolygons } from "maptalks.three";
 import * as THREE from "three";
 import Building from "./building";
 
@@ -22,10 +22,9 @@ const buildingLayer = new ThreeLayer("building", {
   forceRenderOnMoving: true,
   forceRenderOnRotating: true,
 });
-const texture = new THREE.TextureLoader().load("http://p0.qhimg.com/t013aad9b06331e755d.jpg");
+const texture = new THREE.TextureLoader().load("assets/brickwall_normal.jpg");
 texture.wrapS = THREE.RepeatWrapping;
 texture.wrapT = THREE.RepeatWrapping;
-texture.repeat.set(1, 1);
 buildingLayer.prepareToDraw = function (gl, scene, camera) {
   const light = new THREE.DirectionalLight(0xffffff);
   light.position.set(0, -10, 10).normalize();
@@ -42,7 +41,6 @@ buildingLayer.draw = function () {
   });
   const material = new THREE.MeshStandardMaterial({
     color: 0xffffff,
-    map: texture
   });
   const material1 = new THREE.MeshStandardMaterial({
     color: 0xAAAAAA,
@@ -56,39 +54,11 @@ buildingLayer.draw = function () {
     return polygon;
   });
   if(polygons.length > 0) {
-    const extrudePolygons = new Building(polygons, {interactive: false}, material, this);
+    const extrudePolygons = this.toExtrudePolygons(polygons, {interactive: false}, [material, material1]);
     this.buildingGroup = extrudePolygons;
     buildingLayer.addMesh(extrudePolygons);
   }
 
 };
-/* buildingLayer.draw = function () {
-  this.buildingGroup && this.removeMesh(this.buildingGroup);
-  const mapbox = mapboxLayer.getGlMap();
-  const features = mapbox.querySourceFeatures("composite", {
-    sourceLayer: "building",
-  });
-  const material = new THREE.MeshStandardMaterial({
-    color: 0xffffff,
-    // map: texture
-  });
-  const material1 = new THREE.MeshStandardMaterial({
-    color: 0xAAAAAA,
-  });
-  const polygons = features.map((feature) => {
-    const height = feature.properties["height"];
-    const polygon = maptalks.GeoJSON.toGeometry(feature);
-    polygon.setProperties({
-      height: height + 30,
-    });
-    return polygon;
-  });
-  if(polygons.length > 0) {
-    const extrudePolygons = this.toExtrudePolygons(polygons, {interactive: false}, material);
-    this.buildingGroup = extrudePolygons;
-    buildingLayer.addMesh(extrudePolygons);
-  }
-
-}; */
 buildingLayer.addTo(map);
 console.log(buildingLayer)
