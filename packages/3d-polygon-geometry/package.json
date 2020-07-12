@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "3d-polygon-geometry",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "wckgo",
+  "homepage": "https://github.com/wckgo/wckgo-gallery#readme",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --open --config webpack.config.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "@turf/bbox": "^6.0.1",
+    "@turf/explode": "^5.1.5",
+    "@turf/hex-grid": "^6.0.2",
+    "@turf/union": "^6.0.3",
+    "earcut": "^2.2.2",
+    "three": "^0.118.3"
+  }
+}
