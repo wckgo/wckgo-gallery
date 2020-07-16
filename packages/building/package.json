@@ -11,10 +11,14 @@
   },
   "dependencies": {
     "mapbox-gl": "^1.11.0",
-    "maptalks": "^0.47.5",
+    "maptalks": "^1.0.0-alpha.7",
     "maptalks.mapboxgl": "^0.3.3",
     "maptalks.three": "^0.11.2",
+    "mapvgl": "^1.0.0-beta.59",
     "three": "^0.117.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "expose-loader": "^1.0.0",
+    "worker-loader": "^2.0.0"
+  }
 }

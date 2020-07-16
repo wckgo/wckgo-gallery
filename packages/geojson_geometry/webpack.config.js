@@ -3,7 +3,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
@@ -18,24 +17,8 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "building",
+      title: "color-model",
       template: "public/index.html",
-    }),
-    new CopyWebpackPlugin({
-      patterns: [
-        {
-          from: __dirname + "/public/assets",
-          to: __dirname + "/dist/assets",
-        },
-      ],
-    }),
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.worker\.js$/,
-        use: { loader: 'worker-loader' }
-      }
-    ],
-  },
+    })
+  ]
 };
