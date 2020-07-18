@@ -1,0 +1,15 @@
+{
+  "name": "raster-terrain",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "wckgo <wckgogogo@gmail.com>",
+  "homepage": "https://github.com/wckgo/wckgo-gallery#readme",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --open --config webpack.config.js",
+    "build": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "three": "^0.116.0"
+  }
+}

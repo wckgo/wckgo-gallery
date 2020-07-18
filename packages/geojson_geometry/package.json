@@ -12,7 +12,6 @@
     "dev": "webpack-dev-server --open --config webpack.config.js"
   },
   "dependencies": {
-    "@thi.ng/geom-tessellate": "^0.2.37",
     "@turf/distance": "^6.0.1",
     "@turf/helpers": "^6.1.4",
     "earcut": "^2.2.2",
