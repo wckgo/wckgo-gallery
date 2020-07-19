@@ -1,4 +1,4 @@
-import { Vec3 } from "./Vec3";
+import { Vec3, dot } from "./Vec3";
 import Ray from "./ray";
 
 self.onmessage = function (event) {
@@ -28,7 +28,25 @@ self.onmessage = function (event) {
 }
 
 function ray_color(ray) {
+  let t = hit_sphere(new Vec3(0, 0, -1), 0.5, ray);
+  if (t > 0) {
+    const n = ray.at(t).sub(new Vec3(0, 0, -1)).normalize();
+    return n.add(new Vec3(1, 1, 1)).multiply(0.5).multiply(255);
+  }
   const normalize = ray.direction.clone().normalize();
-  const t = 0.5 * (normalize.y + 1);
+  t = 0.5 * (normalize.y + 1);
   return new Vec3(1, 1, 1).multiply(1 - t).add(new Vec3(0.5, 0.7, 1.0).multiply(t)).multiply(255);
+}
+
+function hit_sphere(center, radius, r) {
+  const oc = r.origin.clone().sub(center);
+  const a = r.direction.length_squared();
+  const half_b = dot(oc, r.direction);
+  const c = oc.length_squared() - radius ** 2;
+  const discriminant = half_b ** 2 - a * c;
+  if (discriminant < 0) {
+    return -1;
+  } else {
+    return (-half_b - Math.sqrt(discriminant)) / a;
+  }
 }
