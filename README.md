@@ -1,5 +1,5 @@
 # WCKGO GALLERY
 
-some funny demo about visualization demo
+some funny demo about visualization
 
 -----

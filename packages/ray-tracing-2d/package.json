@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "name": "tin-terrain",
+  "name": "ray-tracing-2d",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "wckgo <wckgogogo@gmail.com>",
@@ -10,7 +9,10 @@
     "dev": "webpack-dev-server --open --config webpack.config.js",
     "build": "webpack --env.NODE_ENV=production --config webpack.config.js"
   },
+  "devDependencies": {
+    "worker-loader": "^2.0.0"
+  },
   "dependencies": {
-    "three": "^0.116.0"
+    "three": "^0.118.3"
   }
 }
