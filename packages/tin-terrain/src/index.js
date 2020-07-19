@@ -3,12 +3,12 @@ import { Mesh, MeshPhongMaterial, TextureLoader, MeshBasicMaterial, BackSide, Bo
 import { OBJLoader2 } from "three/examples/jsm/loaders/OBJLoader2";
 
 const boxGeo = new BoxGeometry(8000, 8000, 8000)
-const px = "http://qd5oatw0n.bkt.clouddn.com/space_right.jpg";
-const nx = "http://qd5oatw0n.bkt.clouddn.com/space_left.jpg";
-const py = "http://qd5oatw0n.bkt.clouddn.com/space_up.jpg";
-const ny = "http://qd5oatw0n.bkt.clouddn.com/space_down.jpg";
-const pz = "http://qd5oatw0n.bkt.clouddn.com/space_back.jpg";
-const nz = "http://qd5oatw0n.bkt.clouddn.com/space_front.jpg";
+const px = "https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/space_right.jpg";
+const nx = "https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/space_left.jpg";
+const py = "https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/space_up.jpg";
+const ny = "https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/space_down.jpg";
+const pz = "https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/space_back.jpg";
+const nz = "https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/space_front.jpg";
 
 const images = [nx, px, py, ny, nz, pz];
 
@@ -22,9 +22,9 @@ const box = new Mesh(boxGeo, boxMats);
 
 
 const loader = new OBJLoader2();
-loader.load("http://qd5oatw0n.bkt.clouddn.com/ll.obj", (group) => {
+loader.load("https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/ll.obj", (group) => {
   const mesh = group.children[0];
-  const colour = new TextureLoader().load("http://qd5oatw0n.bkt.clouddn.com/ll-color.png");
+  const colour = new TextureLoader().load("https://wckgo-1256084177.cos.ap-beijing.myqcloud.com/blog-img/ll-color.png");
   const material = new MeshPhongMaterial({
     map: colour,
     // alphaMap: colour,
