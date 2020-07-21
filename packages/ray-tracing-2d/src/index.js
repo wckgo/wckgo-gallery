@@ -1,4 +1,5 @@
-import { Vec3 } from "./Vec3";
+import { Vec3 } from "./util";
+import { random_scene } from "./scene";
 
 const canvas = document.querySelector("#canvas");
 const context = canvas.getContext("2d");
@@ -13,19 +14,19 @@ const viewport_height = 2.0;
 const viewport_width = aspect_ratio * viewport_height;
 const focal_length = 1.0;
 
-const origin = new Vec3();
-const horizontal = new Vec3(viewport_width, 0, 0);
-const vertical = new Vec3(0, viewport_height, 0);
-const lower_left_corner = origin.clone()
-  .sub(horizontal.clone().division(2))
-  .sub(vertical.clone().division(2))
-  .sub(new Vec3(0, 0, focal_length));
+const lookfrom = new Vec3(13, 2, 3);
+const lookat = new Vec3();
+const vup = new Vec3(0, 1, 0);
+const dist_to_focus = 10.0;
+const aperture = 0.1;
 
 const camera = {
-  origin,
-  horizontal,
-  vertical,
-  lower_left_corner
+  lookfrom,
+  lookat,
+  vup,
+  aspect_ratio,
+  dist_to_focus,
+  aperture
 };
 
 const image = context.createImageData(width, height);
@@ -45,6 +46,7 @@ for (let i = 0; i < cores; i++) {
   });
 }
 
+const world = random_scene();
 render(width, height);
 
 function applayPixels(event) {
@@ -58,6 +60,7 @@ function applayPixels(event) {
   }
   workers[workerId].status = "free";
   tryApplayImage();
+  console.log("done " + workerId);
 }
 
 function tryApplayImage() {
@@ -70,6 +73,14 @@ function render(width, height) {
   workers.forEach(worker => worker.status = "busy");
   workers.forEach((threed, index) => {
     const h = index === workers.length - 1 ? height - (index * chunkLength) : chunkLength;
-    threed.worker.postMessage({ chunkHeight: h, offset: index * chunkLength, width, height, camera, workerId: threed.workerId, });
+    threed.worker.postMessage({
+      chunkHeight: h,
+      offset: index * chunkLength,
+      width,
+      height,
+      camera,
+      workerId: threed.workerId,
+      world
+    });
   });
 }
