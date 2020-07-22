@@ -11,7 +11,7 @@ export default class Sphere {
     const oc = ray.origin.clone().sub(this.center);
     const a = ray.direction.length_squared();
     const half_b = dot(oc, ray.direction);
-    const c = oc.length_squared() - this.radius ** 2;
+    const c = oc.length_squared() - this.radius * this.radius;
     const discriminant = half_b * half_b - a * c;
     if (discriminant > 0) {
       const root = Math.sqrt(discriminant);

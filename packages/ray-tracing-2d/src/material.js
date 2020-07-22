@@ -13,10 +13,10 @@ export class lambertian {
   }
 
   scatter(r_in, rec) {
-    const scatter_direction = rec.normal.clone().add(random_unit_vector());
+    const scatter_direction = random_unit_vector().add(rec.normal);
     return {
-      scattered: new Ray(rec.p, scatter_direction),
-      attenuation: this.albedo,
+      scattered: new Ray(rec.p.clone(), scatter_direction),
+      attenuation: this.albedo.clone(),
       scatter: true
     };
   }
@@ -46,15 +46,15 @@ export class dielectric {
   }
 
   scatter(r_in, rec) {
-    const attenuation = new Vec3(1.0, 1.0, 1.0);
-    const etai_over_etat = (rec.front_face) ? (1.0 / this.ref_idx) : (this.ref_idx);
+    const attenuation = new Vec3(1, 1, 1);
+    const etai_over_etat = (rec.front_face) ? (1 / this.ref_idx) : (this.ref_idx);
     const unit_direction = normalize(r_in.direction);
     const cos_theta = Math.min(dot(unit_direction.clone().multiply(-1), rec.normal), 1.0);
     const sin_theta = Math.sqrt(1.0 - cos_theta * cos_theta);
     let scattered;
     if (etai_over_etat * sin_theta > 1.0) {
       const reflected = reflect(unit_direction, rec.normal);
-      scattered = new Ray(rec.p, reflected);
+      scattered = new Ray(rec.p, reflected.clone());
       return {
         scattered,
         attenuation,
@@ -64,7 +64,7 @@ export class dielectric {
     const reflect_prob = schlick(cos_theta, etai_over_etat);
     if (random() < reflect_prob) {
       const reflected = reflect(unit_direction, rec.normal);
-      scattered = new Ray(rec.p, reflected);
+      scattered = new Ray(rec.p, reflected.clone());
       return {
         scattered,
         attenuation,
@@ -72,7 +72,7 @@ export class dielectric {
       };
     }
     const refracted = refract(unit_direction, rec.normal, etai_over_etat);
-    scattered = new Ray(rec.p, refracted);
+    scattered = new Ray(rec.p, refracted.clone());
     return {
       scattered,
       attenuation,

@@ -6,7 +6,7 @@ import { HitRecord } from "./hittable";
 import Sphere from "./sphere";
 import { lambertian, metal, dielectric } from "./material";
 
-const samples_per_pixel = 10;
+const samples_per_pixel = 50;
 const scale = 1.0 / samples_per_pixel;
 
 export default function render (event) {
@@ -28,7 +28,7 @@ export default function render (event) {
         u = (u + random()) / (width - 1);
         v = (v + random()) / (height - 1);
         const r = camera.get_ray(u, v);
-        pixel_color.add(ray_color(r, world, 50));
+        pixel_color.add(ray_color(r, world, 100));
       }
       let r = pixel_color.x;
       let g = pixel_color.y;

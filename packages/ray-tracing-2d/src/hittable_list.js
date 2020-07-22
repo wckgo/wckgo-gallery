@@ -19,8 +19,8 @@ export default class HittableList {
         hit_anyting = true;
         closest_so_far = temp_rec.t;
         Object.assign(record, temp_rec);
-        return hit_anyting;
       }
     }
+    return hit_anyting;
   }
 }

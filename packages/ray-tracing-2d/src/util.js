@@ -120,9 +120,9 @@ export function reflect(v, n) {
 }
 
 export function refract(uv, n, etai_over_etat) {
-  const cos_theta = dot(-uv, n);
+  const cos_theta = dot(new Vec3().copy(uv).multiply(-1), n);
   const r_out_parallel = new Vec3().copy(uv).add(new Vec3().copy(n).multiply(cos_theta)).multiply(etai_over_etat);
-  const r_out_perp = new Vec3().copy(n).multiply(-Math.sqrt(1.0 - r_out_parallel.length_squared()));
+  const r_out_perp = new Vec3().copy(n).multiply(-Math.sqrt(1 - r_out_parallel.length_squared()));
   return add(r_out_parallel, r_out_perp);
 }
 

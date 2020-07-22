@@ -2,15 +2,15 @@ import { random, Vec3, sub, multiply } from "./util";
 
 export function random_scene() {
   const word = [];
-  // word.push({
-  //   center: { x: 0, y: -1000, z: 0 },
-  //   radius: 1000,
-  //   mat: {
-  //     type: "lambertian",
-  //     arg: [{ x: 0.5, y: 0.5, z: 0.5 }]
-  //   }
-  // });
-  /* for (let a = -11; a < 11; a++) {
+  word.push({
+    center: { x: 0, y: -1000, z: 0 },
+    radius: 1000,
+    mat: {
+      type: "lambertian",
+      arg: [{ x: 0.5, y: 0.5, z: 0.5 }]
+    }
+  });
+  for (let a = -11; a < 11; a++) {
     for (let b = -11; b < 11; b++) {
       const choose_mat = random();
       const center = new Vec3(a + 0.9 * random(), 0.2, b + 0.9 * random());
@@ -53,7 +53,8 @@ export function random_scene() {
         }
       }
     }
-  } */
+  }
+  
   word.push({
     center: { x: 0, y: 1, z: 0 },
     radius: 1,
