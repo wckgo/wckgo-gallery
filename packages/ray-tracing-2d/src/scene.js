@@ -6,12 +6,13 @@ export function random_scene() {
     center: { x: 0, y: -1000, z: 0 },
     radius: 1000,
     mat: {
-      type: "lambertian",
-      arg: [{ x: 0.5, y: 0.5, z: 0.5 }]
+      type: "metal",
+      arg: [{ x: 0.5, y: 0.5, z: 0.5 }, 0.618]
     }
   });
   for (let a = -11; a < 11; a++) {
     for (let b = -11; b < 11; b++) {
+      if(a > -5 && a < 5 && b > -1 && b < 1) continue;
       const choose_mat = random();
       const center = new Vec3(a + 0.9 * random(), 0.2, b + 0.9 * random());
       const point = new Vec3(4, 0.2, 0);

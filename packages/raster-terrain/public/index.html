@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="zh">
-<head>
-  <meta charset="utf-8" />
-  <title><%= htmlWebpackPlugin.options.title %></title>
-  <link rel="icon" href="/favicon.ico" />
-  <style>
-    html, body {
-      margin: 0;
-      height: 100%;
-    }
-    #app {
-      width: 100%;
-      height: 100%;
-    }
-  </style>
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      #app {
+        width: 100%;
+        height: 100%;
+      }
+      #message {
+        position: absolute;
+        top: 10rem;
+        left: 50%;
+        transform: translate(-50%, 0);
+        background: #b03a2e;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: #fff;
+        transition: all 1s ease-in-out;
+      }
+      .hidden {
+        opacity: 0;
+      }
+    </style>
+  </head>
 
-<body>
-  <div id="app"></div>
-</body>
-
+  <body>
+    <div id="app"></div>
+    <div id="message">数据加载缓慢，请耐心等待。</div>
+    <script>
+      const message = document.querySelector("#message");
+      window.addEventListener("load", function() {
+        setTimeout(() => {
+          message.classList.add("hidden");
+        }, 1000);
+      });
+    </script>
+  </body>
 </html>

@@ -1,12 +1,11 @@
-import { Vec3, dot, multiply, random, clamp } from "./util";
-import Ray from "./ray";
+import { Vec3, multiply, random, clamp } from "./util";
 import Camera from "./camera";
 import HitTableList from "./hittable_list";
 import { HitRecord } from "./hittable";
 import Sphere from "./sphere";
 import { lambertian, metal, dielectric } from "./material";
 
-const samples_per_pixel = 50;
+const samples_per_pixel = 100;
 const scale = 1.0 / samples_per_pixel;
 
 export default function render (event) {
@@ -37,13 +36,14 @@ export default function render (event) {
       g = Math.sqrt(scale * g);
       b = Math.sqrt(scale * b);
       const index = i * preLinePixelCount + j * 4;
-      view[index] = clamp(r, 0, 0.999) * 255;
-      view[index + 1] = clamp(g, 0, 0.999) * 255;
-      view[index + 2] = clamp(b, 0, 0.999) * 255;
+      view[index] = clamp(r, 0, 1) * 255;
+      view[index + 1] = clamp(g, 0, 1) * 255;
+      view[index + 2] = clamp(b, 0, 1) * 255;
       view[index + 3] = 255;
     }
+    self.postMessage({done: false});
   }
-  self.postMessage({ height, width, offset, chunkHeight, workerId, data: buffer }, [buffer]);
+  self.postMessage({ height, width, offset, chunkHeight, workerId, data: buffer, done: true }, [buffer]);
 }
 
 function ray_color(ray, world, depth) {
@@ -59,27 +59,6 @@ function ray_color(ray, world, depth) {
   const normalize = ray.direction.clone().normalize();
   const t = 0.5 * (normalize.y + 1);
   return new Vec3(1, 1, 1).multiply(1 - t).add(new Vec3(0.5, 0.7, 1.0).multiply(t));
-/*   let t = hit_sphere(new Vec3(0, 0, -1), 0.5, ray);
-  if (t > 0) {
-    const n = ray.at(t).sub(new Vec3(0, 0, -1)).normalize();
-    return n.add(new Vec3(1, 1, 1)).multiply(0.5);
-  }
-  const normalize = ray.direction.clone().normalize();
-  t = 0.5 * (normalize.y + 1);
-  return new Vec3(1, 1, 1).multiply(1 - t).add(new Vec3(0.5, 0.7, 1.0).multiply(t)); */
-}
-
-function hit_sphere(center, radius, r) {
-  const oc = r.origin.clone().sub(center);
-  const a = r.direction.length_squared();
-  const half_b = dot(oc, r.direction);
-  const c = oc.length_squared() - radius ** 2;
-  const discriminant = half_b ** 2 - a * c;
-  if (discriminant < 0) {
-    return -1;
-  } else {
-    return (-half_b - Math.sqrt(discriminant)) / a;
-  }
 }
 
 function initCamera(camera) {

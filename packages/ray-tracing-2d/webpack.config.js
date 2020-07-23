@@ -19,7 +19,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "Ray Tracing | wckgo",
+      title: "Ray Tracing non-realtime (1) | wckgo",
       template: "public/index.html",
     })
   ],

@@ -70,6 +70,11 @@
         font-size: 3rem;
         text-transform: uppercase;
       }
+      #time {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
       .show {
         display: block;
       }
@@ -83,12 +88,14 @@
     <div id="app">
       <canvas id="canvas" width="960" height="540"></canvas>
     </div>
-    <div id="progress" class="hidden">
+    <div id="progress" class="show">
       <progress value="0" max="100"></progress>
+      <div><span>thread count:&nbsp;&nbsp;</span><span id="thread_count"></span></div>
       <div class="tip">
         <span>rendering</span>
       </div>
     </div>
+    <div id="time" class="hidden"></div>
     <script>
       var mainColor = localStorage.getItem("main_color");
       mainColor &&

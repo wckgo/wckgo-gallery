@@ -1,6 +1,8 @@
 import { Vec3 } from "./util";
 import { random_scene } from "./scene";
 
+const progress = document.querySelector("progress");
+
 const canvas = document.querySelector("#canvas");
 const context = canvas.getContext("2d");
 
@@ -10,11 +12,7 @@ const height = canvas.height;
 const preLinePixelCount = width * 4;
 
 const aspect_ratio = width / height;
-const viewport_height = 2.0;
-const viewport_width = aspect_ratio * viewport_height;
-const focal_length = 1.0;
-
-const lookfrom = new Vec3(13, 2, 3);
+const lookfrom = new Vec3(12, 2, 3);
 const lookat = new Vec3();
 const vup = new Vec3(0, 1, 0);
 const dist_to_focus = 10.0;
@@ -46,26 +44,45 @@ for (let i = 0; i < cores; i++) {
   });
 }
 
+let completed = 0;
+document.querySelector("#thread_count").innerText = cores;
 const world = random_scene();
+const startTime = Date.now();
 render(width, height);
 
 function applayPixels(event) {
-  const { offset, data, workerId, chunkHeight, height } = event.data;
-  const view = new Uint8ClampedArray(data);
-  for (let i = 0; i < chunkHeight; i++) {
-    const currentHeight = height - (offset + i);
-    for (let j = 0; j < preLinePixelCount; j++) {
-      image.data[((currentHeight - 1) * preLinePixelCount) + j] = view[i * preLinePixelCount + j];
+  const { offset, data, workerId, chunkHeight, height, done } = event.data;
+  if(done) {
+    const view = new Uint8ClampedArray(data);
+    for (let i = 0; i < chunkHeight; i++) {
+      const currentHeight = height - (offset + i);
+      for (let j = 0; j < preLinePixelCount; j++) {
+        image.data[((currentHeight - 1) * preLinePixelCount) + j] = view[i * preLinePixelCount + j];
+      }
     }
+    workers[workerId].status = "free";
+    tryApplayImage();
+    console.log("done " + workerId);
+  } else {
+    completed++;
+    updateProgress();
   }
-  workers[workerId].status = "free";
-  tryApplayImage();
-  console.log("done " + workerId);
+ 
 }
 
 function tryApplayImage() {
   const canDraw = workers.findIndex(worker => worker.status === "busy") === -1;
-  canDraw && context.putImageData(image, 0, 0);
+  if(canDraw) {
+    const mask = document.querySelector("#progress");
+    mask.classList.remove("show");
+    mask.classList.add("hidden");
+    context.putImageData(image, 0, 0);
+    const endTime = Date.now();
+    const time = document.querySelector("#time")
+    time.innerText = `Rendering takes ${endTime - startTime} ms.`;
+    time.classList.add("show");
+    time.classList.remove("hidden");
+  }
 }
 
 function render(width, height) {
@@ -83,4 +100,8 @@ function render(width, height) {
       world
     });
   });
+}
+
+function updateProgress() {
+  progress.value = completed / height * 100;
 }
