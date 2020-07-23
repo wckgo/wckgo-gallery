@@ -16,9 +16,9 @@ const scene = new Scene();
 const camera = new PerspectiveCamera(70, container.clientWidth / container.clientHeight, 1, 1000);
 const controls = new OrbitControls(camera, canvas);
 camera.position.set(
-  10 * Math.sin(Math.PI / 6),
-  10 * Math.tan(Math.PI / 6),
-  10 * Math.cos(Math.PI / 6)
+  30 * Math.sin(Math.PI / 6),
+  30 * Math.tan(Math.PI / 6),
+  30 * Math.cos(Math.PI / 6)
 );
 scene.add(camera);
 // light
