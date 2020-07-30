@@ -14,16 +14,16 @@ renderer.setClearColor(0x434343);
 const scene = new THREE.Scene();
 // camera
 const camera = new THREE.PerspectiveCamera(
-  70,
+  45,
   container.clientWidth / container.clientHeight,
   1,
   1000
 );
 const controls = new OrbitControls(camera, canvas);
 camera.position.set(
-  10 * Math.sin(Math.PI / 6),
-  10 * Math.tan(Math.PI / 6),
-  10 * Math.cos(Math.PI / 6)
+  5 * Math.sin(Math.PI / 6),
+  5 * Math.tan(Math.PI / 6),
+  5 * Math.cos(Math.PI / 6)
 );
 scene.add(camera);
 // light

@@ -12,10 +12,8 @@
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "@turf/bbox": "^6.0.1",
-    "@turf/explode": "^5.1.5",
-    "@turf/hex-grid": "^6.0.2",
-    "@turf/union": "^6.0.3",
+    "@turf/distance": "^6.0.1",
+    "@turf/helpers": "^6.1.4",
     "earcut": "^2.2.2",
     "three": "^0.118.3"
   }

@@ -1018,15 +1018,7 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@turf/bbox@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.npm.taobao.org/@turf/bbox/download/@turf/bbox-6.0.1.tgz#b966075771475940ee1c16be2a12cf389e6e923a"
-  integrity sha1-uWYHV3FHWUDuHBa+KhLPOJ5ukjo=
-  dependencies:
-    "@turf/helpers" "6.x"
-    "@turf/meta" "6.x"
-
-"@turf/distance@6.x", "@turf/distance@^6.0.1":
+"@turf/distance@^6.0.1":
   version "6.0.1"
   resolved "https://registry.npm.taobao.org/@turf/distance/download/@turf/distance-6.0.1.tgz#0761f28784286e7865a427c4e7e3593569c2dea8"
   integrity sha1-B2Hyh4QobnhlpCfE5+NZNWnC3qg=
@@ -1034,42 +1026,10 @@
     "@turf/helpers" "6.x"
     "@turf/invariant" "6.x"
 
-"@turf/explode@^5.1.5":
-  version "5.1.5"
-  resolved "https://registry.npm.taobao.org/@turf/explode/download/@turf/explode-5.1.5.tgz#b12b2f774004a1b48f62ba95b20a1c655a3de118"
-  integrity sha1-sSsvd0AEobSPYrqVsgocZVo94Rg=
-  dependencies:
-    "@turf/helpers" "^5.1.5"
-    "@turf/meta" "^5.1.5"
-
 "@turf/helpers@6.x", "@turf/helpers@^6.1.4":
   version "6.1.4"
   resolved "https://registry.npm.taobao.org/@turf/helpers/download/@turf/helpers-6.1.4.tgz#d6fd7ebe6782dd9c87dca5559bda5c48ae4c3836"
   integrity sha1-1v1+vmeC3ZyH3KVVm9pcSK5MODY=
-
-"@turf/helpers@^5.1.5":
-  version "5.1.5"
-  resolved "https://registry.npm.taobao.org/@turf/helpers/download/@turf/helpers-5.1.5.tgz#153405227ab933d004a5bb9641a9ed999fcbe0cf"
-  integrity sha1-FTQFInq5M9AEpbuWQantmZ/L4M8=
-
-"@turf/hex-grid@^6.0.2":
-  version "6.0.2"
-  resolved "https://registry.npm.taobao.org/@turf/hex-grid/download/@turf/hex-grid-6.0.2.tgz#d08ffcfe7aeb5fc48974f650075bab726121a268"
-  integrity sha1-0I/8/nrrX8SJdPZQB1urcmEhomg=
-  dependencies:
-    "@turf/distance" "6.x"
-    "@turf/helpers" "6.x"
-    "@turf/intersect" "6.x"
-    "@turf/invariant" "6.x"
-
-"@turf/intersect@6.x":
-  version "6.1.3"
-  resolved "https://registry.npm.taobao.org/@turf/intersect/download/@turf/intersect-6.1.3.tgz#c6574a2f00a38df6f81fc08d8103ad5295b7b6bc"
-  integrity sha1-xldKLwCjjfb4H8CNgQOtUpW3trw=
-  dependencies:
-    "@turf/helpers" "6.x"
-    "@turf/invariant" "6.x"
-    martinez-polygon-clipping "^0.4.3"
 
 "@turf/invariant@6.x":
   version "6.1.2"
@@ -1077,29 +1037,6 @@
   integrity sha1-YBPtYhn5rC7a2psx4d+lkY6wovc=
   dependencies:
     "@turf/helpers" "6.x"
-
-"@turf/meta@6.x":
-  version "6.0.2"
-  resolved "https://registry.npm.taobao.org/@turf/meta/download/@turf/meta-6.0.2.tgz#eb92951126d24a613ac1b7b99d733fcc20fd30cf"
-  integrity sha1-65KVESbSSmE6wbe5nXM/zCD9MM8=
-  dependencies:
-    "@turf/helpers" "6.x"
-
-"@turf/meta@^5.1.5":
-  version "5.2.0"
-  resolved "https://registry.npm.taobao.org/@turf/meta/download/@turf/meta-5.2.0.tgz#3b1ad485ee0c3b0b1775132a32c384d53e4ba53d"
-  integrity sha1-OxrUhe4MOwsXdRMqMsOE1T5LpT0=
-  dependencies:
-    "@turf/helpers" "^5.1.5"
-
-"@turf/union@^6.0.3":
-  version "6.0.3"
-  resolved "https://registry.npm.taobao.org/@turf/union/download/@turf/union-6.0.3.tgz#463b62d71c406f40a6978f560bfb92e88fe7db56"
-  integrity sha1-Rjti1xxAb0Cml49WC/uS6I/n21Y=
-  dependencies:
-    "@turf/helpers" "6.x"
-    "@turf/invariant" "6.x"
-    martinez-polygon-clipping "^0.4.3"
 
 "@types/anymatch@*":
   version "1.3.1"
@@ -5361,14 +5298,6 @@ mapvgl@^1.0.0-beta.59:
   resolved "https://registry.npm.taobao.org/mapvgl/download/mapvgl-1.0.0-beta.60.tgz#0527d02b4404a99f1e74eeeef1b55197b9ce2ca8"
   integrity sha1-BSfQK0QEqZ8edO7u8bVRl7nOLKg=
 
-martinez-polygon-clipping@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.npm.taobao.org/martinez-polygon-clipping/download/martinez-polygon-clipping-0.4.3.tgz#a3971ddf1da147104b5d0fbbf68f728bb62885c1"
-  integrity sha1-o5cd3x2hRxBLXQ+79o9yi7YohcE=
-  dependencies:
-    splaytree "^0.1.4"
-    tinyqueue "^1.2.0"
-
 md5.js@^1.3.4:
   version "1.3.5"
   resolved "https://registry.npm.taobao.org/md5.js/download/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
@@ -7532,11 +7461,6 @@ spdy@^4.0.2:
     select-hose "^2.0.0"
     spdy-transport "^3.0.0"
 
-splaytree@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.npm.taobao.org/splaytree/download/splaytree-0.1.4.tgz#fc35475248edcc29d4938c9b67e43c6b7e55a659"
-  integrity sha1-/DVHUkjtzCnUk4ybZ+Q8a35Vplk=
-
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/split-string/download/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -7960,11 +7884,6 @@ timers-browserify@^2.0.4:
   integrity sha1-gAsfPu4nLlvFPuRloE0OgEwxIR8=
   dependencies:
     setimmediate "^1.0.4"
-
-tinyqueue@^1.2.0:
-  version "1.2.3"
-  resolved "https://registry.npm.taobao.org/tinyqueue/download/tinyqueue-1.2.3.tgz#b6a61de23060584da29f82362e45df1ec7353f3d"
-  integrity sha1-tqYd4jBgWE2in4I2LkXfHsc1Pz0=
 
 tinyqueue@^2.0.3:
   version "2.0.3"

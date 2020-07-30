@@ -18,7 +18,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: "building",
+      title: "3d polygon geometry",
       template: "public/index.html",
     }),
     new CopyWebpackPlugin({
@@ -30,4 +30,12 @@ module.exports = {
       ],
     }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.glsl$/i,
+        use: ["raw-loader"],
+      }
+    ],
+  },
 };

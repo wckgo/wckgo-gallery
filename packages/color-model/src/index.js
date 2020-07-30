@@ -1,5 +1,5 @@
 import { scene } from "./gl_context";
-import { Vector3, BufferGeometry, ShaderMaterial, Points, Float32BufferAttribute } from "three";
+import { Vector3, BufferGeometry, ShaderMaterial, Points, Float32BufferAttribute, Matrix3, Matrix4 } from "three";
 import * as dat from 'dat.gui';
 import pointVertSource from "./shader/point.vert.glsl";
 import pointFragSource from "./shader/point.frag.glsl";
@@ -40,7 +40,7 @@ const action = new Action(geometry, vectices, 2);
 const options = {
   colorModel: "RGB"
 }
-const colorModels = ["RGB", "HSL", "HSV"];
+const colorModels = ["RGB", "HSL", "HSV", "XYZ", "LMS"];
 const gui = new dat.GUI();
 const controller = gui.add(options, "colorModel", colorModels);
 controller.onChange(value => {
@@ -51,6 +51,10 @@ controller.onChange(value => {
     action.setTarget(vectices);
   } else if (value === "HSV") {
     action.setTarget(toHSV(colors));
+  } else if (value === "XYZ") {
+    action.setTarget(toXYZ(colors));
+  } else if (value === "LMS") {
+    action.setTarget(toLMS(colors));
   }
 });
 
@@ -115,6 +119,39 @@ function toHSV(colors) {
   });
 }
 
+const xyzMat = new Matrix3();
+xyzMat.set(
+  0.4887180,  0.3106803,  0.2006017,
+  0.1762044,  0.8129847,  0.0108109,
+  0.0000000,  0.0102048,  0.9897952
+)
+const xyzMv = new Matrix4().set(
+  segments, 0, 0, 0,
+  0, segments, 0, 0,
+  0, 0, segments, 0,
+  0, 0, 0, 1
+);
+
+const xyzMv2 = new Matrix4().set(
+  1, 0, 0, -segments / 2,
+  0, 1, 0, 0,
+  0, 0, 1, -segments / 2,
+  0, 0, 0, 1
+);
+
+function toXYZ(colors) {
+  return colors.map(color => color.clone().applyMatrix3(xyzMat).applyMatrix4(xyzMv).applyMatrix4(xyzMv2));
+}
+
+const lmsMat = new Matrix3().set(
+  0.3811, 0.5783, 0.0402,
+  0.1967, 0.7244, 0.0782,
+  0.0241, 0.1288, 0.8444
+)
+
+function toLMS(colors) {
+  return colors.map(color => color.clone().applyMatrix3(lmsMat).applyMatrix4(xyzMv).applyMatrix4(xyzMv2));
+}
 
 function deg2Rad(angle) {
   return Math.PI / 180 * angle;
