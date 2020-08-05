@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root {
+        --main-color: #0f4c81;
+      }
+    </style>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      body {
+        background: linear-gradient(150deg, #ffffff, #dddddd);
+      }
+      #app {
+        width: 100%;
+        height: 100%;
+      }
+      #canvas {
+        width: 960px;
+        height: 540px;
+        box-shadow: 0 0 20px 1px #00000038;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -270px;
+        margin-left: -480px;
+      }
+      progress {
+        width: 100%;
+        border: none;
+        vertical-align: super;
+        height: 1rem;
+        background: #aaa;
+        color: var(--main-color);
+        transition: all 0.2s ease-in-out;
+      }
+      progress::-webkit-progress-bar {
+        background-color: #aaa;
+        width: 100%;
+      }
+      progress::-webkit-progress-value {
+        background-color: var(--main-color) !important;
+        transition: all 0.2s ease-in-out;
+      }
+      progress::-moz-progress-bar {
+        background-color: var(--main-color) !important;
+        transition: all 0.2s ease-in-out;
+      }
+      #progress {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        background: #d0d0d07a;
+        top: 0;
+        left: 0;
+      }
+      #progress .tip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        text-transform: uppercase;
+      }
+      #time {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .show {
+        display: block;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <canvas id="canvas" width="960" height="540"></canvas>
+    </div>
+    <div id="progress" class="show">
+      <progress value="0" max="100"></progress>
+      <div><span>thread count:&nbsp;&nbsp;</span><span id="thread_count"></span></div>
+      <div class="tip">
+        <span>rendering</span>
+      </div>
+    </div>
+    <div id="time" class="hidden"></div>
+    <script>
+      var mainColor = localStorage.getItem("main_color");
+      mainColor &&
+        document.documentElement.style.setProperty("--main-color", mainColor);
+    </script>
+  </body>
+</html>
