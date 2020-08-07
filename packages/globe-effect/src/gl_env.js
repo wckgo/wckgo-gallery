@@ -20,11 +20,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 const controls = new OrbitControls(camera, canvas);
-camera.position.set(
-  4 * Math.sin(Math.PI / 6),
-  4 * Math.tan(Math.PI / 6),
-  4 * Math.cos(Math.PI / 6)
-);
+camera.position.set(0, 0, 5);
 scene.add(camera);
 // light
 const ambientLight = new THREE.AmbientLight(0xffffff, 1);

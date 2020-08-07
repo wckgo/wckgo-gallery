@@ -4,6 +4,7 @@ precision mediump float;
 uniform vec3 color;
 uniform vec3 scanColor;
 uniform sampler2D map;
+uniform sampler2D mesk;
 uniform float time;
 uniform float duration;
 
@@ -18,24 +19,21 @@ float brightness(vec4 color) {
 
 void main() 
 {
+	float m = brightness(texture(mesk, vUv));
+	if(m > 0.8) {
+		discard;
+	}
 	float d = duration * 2.0;
 	float t = mod(time, d);
 	vec4 color1 = texture( map, vUv);
 	float b = brightness(color1);
 	float ratio = 0.0;
-	float low, mid, hi;
 	if(t > duration) {
 		float r = (t - duration) / duration;
-		low = r;
-		hi = r + 0.02;
-		mid = (hi + low) / 2.0;
 		if (b > r && b < r + 0.02) {
-			low = r;
-			hi = r + 
 			ratio = 0.3;
 		}
 	} else {
-		low = 
 		if(b < t / duration && b > t / duration - 0.02) {
 			ratio = 0.3;
 		}

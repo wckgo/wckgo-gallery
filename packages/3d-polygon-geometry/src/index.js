@@ -1,4 +1,4 @@
-import { Vector3, BufferGeometry, Float32BufferAttribute, Color, Clock, ShaderMaterial, Mesh, DoubleSide, Vector2, TextureLoader, RepeatWrapping } from "three";
+import { Vector3, BufferGeometry, Float32BufferAttribute, Color, Clock, ShaderMaterial, Mesh, DoubleSide, Vector2, TextureLoader, RepeatWrapping, PolyhedronBufferGeometry } from "three";
 import { scene, animationLoop } from "./gl_env";
 import earcut from "earcut";
 import truf_distance from "@turf/distance";
@@ -6,6 +6,8 @@ import { point as truf_point } from "@turf/helpers";
 import vert from "./polygon.vert.glsl";
 import frag from "./polygon.frag.glsl";
 import { BufferGeometryUtils } from "three/examples/jsm/utils/BufferGeometryUtils";
+import { MeshNormalMaterial } from "three";
+import { MeshStandardMaterial } from "three";
 
 function latlngToVec(lng, lat, r = 1) {
   const phi = ((90 - lat) * Math.PI) / 180;
@@ -75,6 +77,7 @@ function genaratePolygonMesh(polygons) {
 const texture = new TextureLoader().load("http://p0.qhimg.com/t016180698510e89d13.png");
 texture.wrapS = RepeatWrapping;
 texture.wrapT = RepeatWrapping;
+texture.repeat.set(8, 8);
 
 fetch("https://s5.ssl.qhres.com/static/55a302c51bdb20e3.json")
   .then((response) => response.json())
@@ -105,7 +108,10 @@ fetch("https://s5.ssl.qhres.com/static/55a302c51bdb20e3.json")
       transparent: true,
       uniforms: {
         color: {
-          value: new Color("#85C1E9")
+          value: new Color("#3498DB")
+        },
+        scanColor: {
+          value: new Color("#BB8FCE")
         },
         map: {
           value: texture
@@ -114,12 +120,16 @@ fetch("https://s5.ssl.qhres.com/static/55a302c51bdb20e3.json")
           value: 0,
         },
         duration: {
-          value: 5.0
+          value: 3.0
         }
       },
       side: DoubleSide
     });
-    const mesh = new Mesh(geo, material);
+    const g = new PolyhedronBufferGeometry(geo.getAttribute("position").array, geo.index.array, 1, 3);
+    const m = new MeshStandardMaterial({
+      map: texture
+    });
+    const mesh = new Mesh(g, material);
     scene.add(mesh);
     const clock = new Clock(true);
     animationLoop.renderLoopFuncs.add(() => {
