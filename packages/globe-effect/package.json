@@ -1,9 +1,8 @@
 {
-  "private": true,
-  "name": "3d-polygon-geometry",
+  "name": "globe-effect",
   "version": "1.0.0",
   "description": "> TODO: description",
-  "author": "wckgo",
+  "author": "wckgo <wckgogogo@gmail.com>",
   "homepage": "https://github.com/wckgo/wckgo-gallery#readme",
   "license": "MIT",
   "main": "src/index.js",
@@ -12,9 +11,6 @@
     "build": "webpack --config webpack.config.js"
   },
   "dependencies": {
-    "@turf/distance": "^6.0.1",
-    "@turf/helpers": "^6.1.4",
-    "earcut": "^2.2.2",
     "three": "^0.118.3"
   }
 }
