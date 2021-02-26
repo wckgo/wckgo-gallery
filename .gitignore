@@ -109,3 +109,8 @@ dist
 .vscode-test
 
 dist/
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+.pnp.*
